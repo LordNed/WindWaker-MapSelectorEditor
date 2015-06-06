@@ -39,6 +39,12 @@ namespace WPF_Editor
             InitializeComponent();
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+
+            m_filePath = "C:\\Users\\Matt\\Downloads\\Menu1.dat";
+
+            var debugMenu = new DebugMenuModifier();
+            debugMenu.Load(m_filePath);
+            DebugMenu = debugMenu;
         }
 
         private void OnAboutButtonClicked(object sender, RoutedEventArgs e)
