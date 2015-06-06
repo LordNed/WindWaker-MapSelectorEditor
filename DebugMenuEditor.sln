@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIReadout", "CLIReadout\CLIReadout.csproj", "{B3CDC834-E802-4FDF-9048-78A8A06B4520}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF Editor", "WPF Editor\WPF Editor.csproj", "{8E141260-03D0-4F69-B502-6821F12EE1B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B3CDC834-E802-4FDF-9048-78A8A06B4520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3CDC834-E802-4FDF-9048-78A8A06B4520}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3CDC834-E802-4FDF-9048-78A8A06B4520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E141260-03D0-4F69-B502-6821F12EE1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E141260-03D0-4F69-B502-6821F12EE1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E141260-03D0-4F69-B502-6821F12EE1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E141260-03D0-4F69-B502-6821F12EE1B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
