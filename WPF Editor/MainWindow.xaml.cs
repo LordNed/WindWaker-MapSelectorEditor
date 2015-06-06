@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace WPF_Editor
         }
 
         private DebugMenuModifier m_debugMenu;
+        private string m_filePath;
 
 
         public MainWindow()
@@ -37,13 +39,6 @@ namespace WPF_Editor
             InitializeComponent();
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-
-            //string menuFile = "C:\\Users\\Matt\\Downloads\\Menu1.dat";
-
-            //DebugMenuModifier reader = new DebugMenuModifier();
-            //reader.Load(menuFile);
-
-            //this.DataContext = reader;
         }
 
         private void OnAboutButtonClicked(object sender, RoutedEventArgs e)
@@ -58,6 +53,7 @@ namespace WPF_Editor
 
             if(ofd.ShowDialog() == true)
             {
+                m_filePath = ofd.FileName;
                 var debugMenu = new DebugMenuModifier();
                 debugMenu.Load(ofd.FileName);
                 DebugMenu = debugMenu;
@@ -71,17 +67,40 @@ namespace WPF_Editor
 
         private void OnSaveClicked(object sender, RoutedEventArgs e)
         {
-
+            DebugMenu.Save(m_filePath);
         }
 
         private void OnSaveAsClicked(object sender, RoutedEventArgs e)
         {
+            if (m_debugMenu == null || string.IsNullOrEmpty(m_filePath))
+                throw new ArgumentNullException("No currently loaded debug menu to save!");
 
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Menu Files (*.dat)|*.dat|All files(*.*)|*.*";
+            sfd.FilterIndex = 1;
+            sfd.RestoreDirectory = true;
+            sfd.InitialDirectory = System.IO.Path.GetDirectoryName(m_filePath);
+            sfd.OverwritePrompt = true;
+
+            if(sfd.ShowDialog() == true)
+            {
+                m_debugMenu.Save(sfd.FileName);
+                m_filePath = sfd.FileName;
+            }
         }
 
         private void OnExitClicked(object sender, RoutedEventArgs e)
         {
+            if (DebugMenu != null && !string.IsNullOrEmpty(m_filePath))
+            {
+                GenericModalWindow dialog = new GenericModalWindow("Save before Exit?", "Do you want to save before exiting?", "No", "Yes");
+                if (dialog.ShowDialog() == true)
+                {
+                    DebugMenu.Save(m_filePath);
+                }
+            }
 
+            Application.Current.Shutdown();
         }
     }
 }
