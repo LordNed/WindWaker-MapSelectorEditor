@@ -123,13 +123,9 @@ namespace WPF_Editor
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Apply a SizeToContent size of Manual after we load. This way when we load the horizontal
+            // scroll stuff it doesn't balloon the program outwards.
             this.SizeToContent = System.Windows.SizeToContent.Manual;
-
-            m_filePath = "C:\\Users\\Matt\\Downloads\\Menu1.dat";
-
-            var debugMenu = new DebugMenuModifier();
-            debugMenu.Load(m_filePath);
-            DebugMenu = debugMenu;
         }
 
         private void OnAddSubEntryClicked(object sender, RoutedEventArgs e)
