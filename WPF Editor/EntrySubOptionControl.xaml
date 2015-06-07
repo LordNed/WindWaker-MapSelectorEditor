@@ -4,17 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-             mc:Ignorable="d" Height="83.333" MinWidth="365">
-    <Grid Background="#FF39A621">
-        <TextBlock HorizontalAlignment="Left" Margin="10,7,0,0" TextWrapping="Wrap" Text="Display Name:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Map Name:" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=Name, Mode=TwoWay}" Height="21" Margin="102,3,141,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=MapName, Mode=TwoWay}" Height="21" Margin="102,30,141,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,34,56,0" TextWrapping="Wrap" Text="Room Number:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,7,55,0" TextWrapping="Wrap" Text="Spawn Point Id:" VerticalAlignment="Top"/>
-        <wpfTool:ByteUpDown Value="{Binding Path=SpawnPointId, Mode=TwoWay}" Margin="0,4,9,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="23"/>
-        <wpfTool:ByteUpDown Value="{Binding Path=RoomNumber, Mode=TwoWay}" Margin="0,30,9,0" HorizontalAlignment="Right" Height="23" Width="41" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" Text="Loaded Layer Id:" VerticalAlignment="Top"/>
-        <wpfTool:ByteUpDown Value="{Binding Path=LoadedLayerId, Mode=TwoWay}" Margin="102,56,141,0" Height="23" VerticalAlignment="Top"/>
+             mc:Ignorable="d" Height="256" Width="180" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowFrameColorKey}}"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Display Name:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="Map Name:" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=Name, Mode=TwoWay}" Height="21" Margin="10,31,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Mona Font"/>
+        <TextBox Text="{Binding Path=MapName, Mode=TwoWay}" Height="21" Margin="10,78,10,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" Text="Room Number:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,170,88,0" TextWrapping="Wrap" Text="Spawn Point Id:" VerticalAlignment="Top"/>
+        <wpfTool:ByteUpDown Value="{Binding Path=SpawnPointId, Mode=TwoWay}" Margin="0,164,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="22"/>
+        <wpfTool:ByteUpDown Value="{Binding Path=RoomNumber, Mode=TwoWay}" Margin="0,124,10,0" HorizontalAlignment="Right" Height="22" Width="41" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,211,0,0" TextWrapping="Wrap" Text="Loaded Layer Id:" VerticalAlignment="Top"/>
+        <wpfTool:ByteUpDown Value="{Binding Path=LoadedLayerId, Mode=TwoWay}" Margin="129,205,10,0" Height="22" VerticalAlignment="Top" RenderTransformOrigin="0.5,6.783"/>
     </Grid>
 </UserControl>

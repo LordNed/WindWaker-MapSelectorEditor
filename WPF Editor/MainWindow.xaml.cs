@@ -40,11 +40,7 @@ namespace WPF_Editor
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-            m_filePath = "C:\\Users\\Matt\\Downloads\\Menu1.dat";
 
-            var debugMenu = new DebugMenuModifier();
-            debugMenu.Load(m_filePath);
-            DebugMenu = debugMenu;
         }
 
         private void OnAboutButtonClicked(object sender, RoutedEventArgs e)
@@ -107,6 +103,33 @@ namespace WPF_Editor
             }
 
             Application.Current.Shutdown();
+        }
+
+        private void OnAddEntryClicked(object sender, RoutedEventArgs e)
+        {
+            var newEntry = new DebugMenuModifier.EntryHeader();
+            m_debugMenu.Entries.Add(newEntry);
+            m_mapEntryComboBox.SelectedItem = newEntry;
+        }
+
+        private void OnDeleteEntryClicked(object sender, RoutedEventArgs e)
+        {
+            m_debugMenu.Entries.Remove((DebugMenuModifier.EntryHeader)m_mapEntryComboBox.SelectedItem);
+            int prevIndex = m_mapEntryComboBox.SelectedIndex - 1;
+            if (prevIndex < 0)
+                prevIndex = 0;
+            m_mapEntryComboBox.SelectedIndex = prevIndex;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.SizeToContent = System.Windows.SizeToContent.Manual;
+
+            m_filePath = "C:\\Users\\Matt\\Downloads\\Menu1.dat";
+
+            var debugMenu = new DebugMenuModifier();
+            debugMenu.Load(m_filePath);
+            DebugMenu = debugMenu;
         }
     }
 }
