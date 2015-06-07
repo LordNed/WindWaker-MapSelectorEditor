@@ -38,7 +38,7 @@
         <Grid Margin="0,60,0,0" UseLayoutRounding="True" DataContext="{Binding SelectedItem, ElementName=m_mapEntryComboBox}">
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Header Name:" VerticalAlignment="Top" RenderTransformOrigin="0.421,-1.003"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="120,6,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="169"/>
-            <ListBox ItemsSource="{Binding SubOptions, Mode=TwoWay}" Margin="10,34,10,10" BorderThickness="1" Padding="0" UseLayoutRounding="True" VerticalContentAlignment="Top" ScrollViewer.CanContentScroll="False">
+            <ListBox x:Name="m_subOptionsList" ItemsSource="{Binding SubOptions, Mode=TwoWay}" Margin="10,34,10,10" BorderThickness="1" Padding="0" UseLayoutRounding="True" VerticalContentAlignment="Top" ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <local:EntrySubOptionControl/>
@@ -49,7 +49,7 @@
                         <VirtualizingStackPanel Orientation="Horizontal" IsItemsHost="True" VirtualizingPanel.VirtualizationMode="Recycling"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBox.ItemContainerStyle>
+                <!-- <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Template">
                             <Setter.Value>
@@ -59,10 +59,10 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                </ListBox.ItemContainerStyle>
+                </ListBox.ItemContainerStyle>-->
             </ListBox>
-            <Button Content="Add" Width="110" Height="23" HorizontalAlignment="Left" Margin="557,5,0,0" Click="OnAddEntryClicked" Padding="0" UseLayoutRounding="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
-            <Button Content="Delete" Width="110" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="672,5,0,0" Click="OnDeleteEntryClicked" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False"/>
+            <Button Content="Add" Width="110" Height="23" HorizontalAlignment="Left" Margin="557,5,0,0" Click="OnAddSubEntryClicked" Padding="0" UseLayoutRounding="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+            <Button Content="Delete" Width="110" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="672,5,0,0" Click="OnDeleteSubEntry" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False"/>
         </Grid>
     </Grid>
 </Window>

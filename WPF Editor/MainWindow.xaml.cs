@@ -131,5 +131,26 @@ namespace WPF_Editor
             debugMenu.Load(m_filePath);
             DebugMenu = debugMenu;
         }
+
+        private void OnAddSubEntryClicked(object sender, RoutedEventArgs e)
+        {
+            // Get the currently selected header entry
+            var header = (DebugMenuModifier.EntryHeader)m_mapEntryComboBox.SelectedItem;
+            var newEntry = new DebugMenuModifier.EntrySubOption();
+            header.SubOptions.Add(newEntry);
+            m_subOptionsList.SelectedItem = newEntry;
+            m_subOptionsList.ScrollIntoView(newEntry);
+        }
+
+        private void OnDeleteSubEntry(object sender, RoutedEventArgs e)
+        {
+            var header = (DebugMenuModifier.EntryHeader)m_mapEntryComboBox.SelectedItem;
+
+            header.SubOptions.Remove((DebugMenuModifier.EntrySubOption)m_subOptionsList.SelectedItem);
+            int prevIndex = m_subOptionsList.SelectedIndex - 1;
+            if (prevIndex < 0)
+                prevIndex = 0;
+            m_subOptionsList.SelectedIndex = prevIndex;
+        }
     }
 }
