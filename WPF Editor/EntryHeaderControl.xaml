@@ -1,17 +1,24 @@
-﻿<UserControl x:Class="WPF_Editor.TestUserControl"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Editor" x:Class="WPF_Editor.EntryHeaderControl" 
              mc:Ignorable="d" 
-            Height="Auto" Width="Auto" MinHeight ="128" MaxHeight="196">
+            Height="Auto" MinWidth="380" Width="Auto" MinHeight ="128" MaxHeight="196">
     <Grid MinWidth="200">
         <Grid.Background>
             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
         </Grid.Background>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
         <TextBox Margin="50,10,10,0" TextWrapping="Wrap" Text="{Binding Path=Name, Mode=TwoWay}" VerticalAlignment="Top"/>
-        <ListBox Margin="0,38,0,0" ItemsSource="{Binding Path=SubOptions}" MinHeight="25"/>
+        <ListBox Margin="0,38,0,0" MinHeight="25" ItemsSource="{Binding Path=SubOptions, Mode=TwoWay}" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:EntrySubOptionControl/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </UserControl>

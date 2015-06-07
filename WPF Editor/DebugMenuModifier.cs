@@ -26,16 +26,9 @@ namespace CLIReadout
                 set { m_name = value; OnPropertyChanged("Name"); }
             }
 
-            public EntrySubOption SubOption
-            {
-                get { return m_subOption; }
-                set { m_subOption = value; OnPropertyChanged("SubOption"); }
-            }
-
             public BindingList<EntrySubOption> SubOptions { get; private set; }
 
             private string m_name;
-            private EntrySubOption m_subOption;
 
             public event PropertyChangedEventHandler PropertyChanged;
 
@@ -140,12 +133,29 @@ namespace CLIReadout
                 set { m_mapName = value; OnPropertyChanged("MapName"); }
             }
 
-            public byte RoomNumber;
-            public byte SpawnPointId;
-            public byte LoadedLayerId; // Speculation, untested by Gamma is confident. I agree that it makes sense to have it.
+            public byte RoomNumber
+            {
+                get { return m_roomNumber; }
+                set { m_roomNumber = value; OnPropertyChanged("RoomNumber"); }
+            }
+            public byte SpawnPointId
+            {
+                get { return m_spawnPointId; }
+                set { m_spawnPointId = value; OnPropertyChanged("SpawnPointId"); }
+            }
+
+            // Speculation, untested by Gamma is confident. I agree that it makes sense to have it.
+            public byte LoadedLayerId
+            {
+                get { return m_loadedLayerId; }
+                set { m_loadedLayerId = value; OnPropertyChanged("LoadedLayerId"); }
+            }
 
             private string m_name;
             private string m_mapName;
+            private byte m_roomNumber;
+            private byte m_spawnPointId;
+            private byte m_loadedLayerId;
 
             public event PropertyChangedEventHandler PropertyChanged;
 

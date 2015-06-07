@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPF_Editor
 {
     /// <summary>
-    /// Interaction logic for TestUserControl.xaml
+    /// Interaction logic for EntryHeaderControl.xaml
     /// </summary>
-    public partial class TestUserControl : UserControl
+    public partial class EntryHeaderControl : UserControl
     {
-        public TestUserControl()
+        public EntryHeaderControl()
         {
             InitializeComponent();
         }

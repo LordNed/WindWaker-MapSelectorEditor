@@ -32,7 +32,7 @@
         <ListBox Margin="0,23,0,57" ItemsSource="{Binding Path=Entries, Mode=TwoWay}" Background="#FF9B1515" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <local:TestUserControl/>
+                    <local:EntryHeaderControl/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
