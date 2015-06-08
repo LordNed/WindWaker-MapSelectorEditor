@@ -229,8 +229,10 @@ namespace CLIReadout
             if(!File.Exists(fileName))
                 throw new FileNotFoundException("File not found.");
 
-            EndianBinaryReader reader = new EndianBinaryReader(new FileStream(fileName, FileMode.Open), Endian.Big);
-            Load(reader);
+            using(EndianBinaryReader reader = new EndianBinaryReader(new FileStream(fileName, FileMode.Open), Endian.Big))
+            {
+                Load(reader);
+            }
         }
 
         public void Load(EndianBinaryReader stream)
@@ -262,10 +264,11 @@ namespace CLIReadout
 
         public void Save(string fileName)
         {
-            FileStream stream = File.Open(fileName, FileMode.OpenOrCreate);
-
-            EndianBinaryWriter writer = new EndianBinaryWriter(stream, Endian.Big);
-            Save(writer);
+            using(FileStream stream = File.Open(fileName, FileMode.OpenOrCreate))
+            {
+                EndianBinaryWriter writer = new EndianBinaryWriter(stream, Endian.Big);
+                Save(writer);
+            }
         }
 
         public void Save(EndianBinaryWriter stream)
